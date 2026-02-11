@@ -1,65 +1,36 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import ScrollSequence from "@/components/ScrollSequence/ScrollSequence";
+import Awards from "@/components/Awards/Awards";
+import FeaturedBeers from "@/components/FeaturedBeers/FeaturedBeers";
+import ShopCategories from "@/components/ShopCategories/ShopCategories";
+import Newsletter from "@/components/Newsletter/Newsletter";
+import BrandStoryTeaser from "@/components/BrandStoryTeaser/BrandStoryTeaser";
+import BrewingProcessTeaser from "@/components/BrewingProcessTeaser/BrewingProcessTeaser";
+import EventsTeaser from "@/components/EventsTeaser/EventsTeaser";
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-black text-white font-sans">
+      <main className="flex flex-col w-full">
+        <ScrollSequence />
+        <FeaturedBeers />
+        <BrandStoryTeaser />
+        <BrewingProcessTeaser />
+        <ShopCategories />
+        <EventsTeaser />
+        <div className="py-24 flex flex-col items-center justify-center gap-8 bg-black border-t border-white/5">
+          <Awards />
+          <h2 className="font-display text-5xl text-gold text-center">{t.story.title}</h2>
+          <Link href="/our-story" className="px-8 py-4 border border-gold text-gold uppercase tracking-widest hover:bg-gold hover:text-black transition-colors duration-300">
+            {t.story.title}
+          </Link>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <Newsletter />
       </main>
     </div>
   );

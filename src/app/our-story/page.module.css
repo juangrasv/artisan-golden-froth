@@ -1,0 +1,26 @@
+.container {
+    min-height: 100vh;
+    padding-top: var(--nav-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    background: var(--color-black);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-md);
+}
+
+.description {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.6;
+    color: var(--color-froth);
+}
